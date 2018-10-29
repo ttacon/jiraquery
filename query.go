@@ -117,7 +117,7 @@ func (l *listOp) String() string {
 
 func List(vals ...string) Condition {
 	return &listOp{
-		"[ %s ]",
+		"( %s )",
 		", ",
 		strListToConditionList(vals),
 	}
