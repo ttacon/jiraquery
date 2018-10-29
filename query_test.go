@@ -62,7 +62,7 @@ func Test_Queries(t *testing.T) {
 					List("yolo", "solo"),
 				),
 			),
-			"foo IN [ yolo, solo ]",
+			"foo IN ( yolo, solo )",
 		},
 		{
 			Query(
@@ -166,7 +166,7 @@ func Test_QueryBuilder(t *testing.T) {
 				LessThan(Word("foo"), Word("10")).
 				In(Word("bar"), List("baz", "bolo")).
 				Value(),
-			"foo > 5 AND foo < 10 AND bar IN [ baz, bolo ]",
+			"foo > 5 AND foo < 10 AND bar IN ( baz, bolo )",
 		}, {
 			AndBuilder().
 				Wrapped(
@@ -177,7 +177,7 @@ func Test_QueryBuilder(t *testing.T) {
 				).
 				In(Word("bar"), List("baz", "bolo")).
 				Value(),
-			"( foo = 5 OR foo != 10 ) AND bar IN [ baz, bolo ]",
+			"( foo = 5 OR foo != 10 ) AND bar IN ( baz, bolo )",
 		},
 	}
 
